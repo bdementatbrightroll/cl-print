@@ -5,10 +5,11 @@ require "open-uri"
 
 DELAY = 3
 
-SERVICE_URL = "http://localhost:1337/cannes/photos"
-DOWNLOAD_URL = "http://localhost/cannes/uploads/"
-DOWNLOAD_DIR =  Dir.pwd + "/photos/"
+HOST = "http://52.28.115.200"
 
+SERVICE_URL = HOST + ":1337/cannes/photos"
+DOWNLOAD_URL = HOST + "/cannes/uploads/"
+DOWNLOAD_DIR =  Dir.pwd + "/photos/"
 KNOWN_FILE = Dir.pwd + "/photos.txt"
 
 while true do 
