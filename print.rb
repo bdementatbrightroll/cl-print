@@ -17,9 +17,14 @@ while true do
 	# check for new photos
 	url = URI.parse(SERVICE_URL)
 	req = Net::HTTP::Get.new(url.to_s)
-	res = Net::HTTP.start(url.host, url.port) { |http|
-	  http.request(req)
-	}
+	begin
+		res = Net::HTTP.start(url.host, url.port) { |http|
+			http.request(req)
+		}
+	rescue
+		sleep(DELAY)
+		return;
+	end
 	
 	photos = JSON.parse(res.body)
 	known = File.readlines(KNOWN_FILE)
