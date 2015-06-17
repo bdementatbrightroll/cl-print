@@ -26,7 +26,7 @@ while true do
 		}
 	rescue
 		sleep(DELAY)
-		return;
+		next;
 	end
 	
 	photos = JSON.parse(res.body)
