@@ -12,7 +12,7 @@ DOWNLOAD_URL = HOST + "/cannes/uploads/"
 DOWNLOAD_DIR =  Dir.pwd + "/photos/"
 KNOWN_FILE = Dir.pwd + "/photos.txt"
 
-puts ("Checking " + SERVICE_URL + " every " + DELAY + "seconds.")
+puts ("Checking " + SERVICE_URL + " every " + DELAY.to_s + "seconds.")
 puts ("This screen will update when a new photo is found.")
 
 while true do 
