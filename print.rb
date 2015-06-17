@@ -3,7 +3,7 @@ require 'rubygems'
 require 'json'
 require "open-uri"
 
-DELAY = 3
+DELAY = 10
 
 HOST = "http://52.28.115.200"
 
@@ -11,6 +11,9 @@ SERVICE_URL = HOST + ":1337/cannes/photos"
 DOWNLOAD_URL = HOST + "/cannes/uploads/"
 DOWNLOAD_DIR =  Dir.pwd + "/photos/"
 KNOWN_FILE = Dir.pwd + "/photos.txt"
+
+puts ("Checking " + SERVICE_URL + " every " + DELAY + "seconds.")
+puts ("This screen will update when a new photo is found.")
 
 while true do 
 
@@ -41,10 +44,8 @@ while true do
 		end
 	end
 
-	if toPrint.length == 0
-		puts "No new photos! Trying again in " + DELAY.to_s + " seconds"
-	else 
-		puts "Printing " + toPrint.length.to_s + " photos"
+	if toPrint.length != 0
+		puts "Printing " + toPrint.length.to_s + " photos..."
 	end
 
 	for photo in toPrint
@@ -108,7 +109,7 @@ while true do
 			]
 
 		command = "lpr -o" + command.join(" -o ") + " " + fileLocation
-		puts command
+		# puts command
 		system(command) or raise "Printing failed!"
 	end
 	sleep(DELAY)
